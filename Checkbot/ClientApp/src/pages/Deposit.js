@@ -31,7 +31,6 @@ class Deposit extends React.Component {
     try {
       url = this.props.history.location.state.url;
       data = this.props.history.location.state.data;
-      alert(JSON.stringify(data));
       this.state = {
         activeStep: 0,
         steps: ["Review", "Complete"],

@@ -64,7 +64,6 @@ class Home extends React.Component {
     let account = "";
 
     let string = res.join(' ');
-    alert(string);
 
     let dateRe1 = /[0-9]{1,2}-[\s]{0,3}[0-9]{1,2}-[\s]{0,3}[0-9]{1,2}/;
     let dateRe2 = /[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{1,2}/;
