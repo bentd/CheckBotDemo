@@ -23,6 +23,7 @@ namespace Checkbot.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            Console.WriteLine("Here");
             return id.ToString();
         }
 
@@ -30,18 +31,23 @@ namespace Checkbot.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            Console.WriteLine("Here 2");
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            Console.WriteLine("Here 3");
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Console.WriteLine("Here 4");
         }
+
+       
     }
 }

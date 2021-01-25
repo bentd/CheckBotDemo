@@ -12,3 +12,105 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: #2640C5;
+}
+
+/* Navigation*/
+.nav-container {
+    background: #fffffa;
+    box-shadow: 0px 8px 24px rgba(0,0,0,0.1);
+    height: 72px;
+}
+
+.wrapper {
+    max-width: 1152px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+    nav .logo {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 64px;
+        color: #FF2424;
+    }
+
+.nav-items li {
+    list-style: none;
+    margin-right: 100px;
+}
+
+.header-container {
+    background: #2640C5;
+}
+
+
+header p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+    color: #FFFFFF;
+    margin-bottom: 48px;
+    text-align: center;
+}
+header button {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    color: #000000;
+    text-decoration: none;
+    padding: 12px 48px;
+    display: inline-block;
+    transition: 300ms;
+    
+    align-items: center;
+}
+
+header a {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    color: #000000;
+    text-decoration: none;
+    padding: 12px 48px;
+    display: inline-block;
+    transition: 300ms;
+    margin-right:20px;
+    align-items: center;
+}
+
+header a:hover {
+    transform: translateY(-6px);
+}
+
+center {
+    display: flex;
+    align-items: center;
+}
+
