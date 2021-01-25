@@ -23,6 +23,7 @@ namespace Checkbot.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            Console.WriteLine("Here");
             return id.ToString();
         }
 
@@ -30,6 +31,7 @@ namespace Checkbot.Controllers
         [HttpPost]
         public async Task<string[]> Post([FromBody] string url)
         {
+
             return await ComputerVision.ReadFileUrl(url);
         }
 
@@ -37,12 +39,16 @@ namespace Checkbot.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            Console.WriteLine("Here 3");
         }
 
         // DELETE api/check/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            Console.WriteLine("Here 4");
         }
+
+       
     }
 }
