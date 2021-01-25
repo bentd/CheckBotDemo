@@ -77,11 +77,17 @@ class Home extends React.Component {
     let amountNumericalRe = /\$\s.[0-9,.\s]*/
     amountNumerical = string.match(amountNumericalRe) !== null ? string.match(amountNumericalRe)[0] : amountNumerical;
 
-    let amountPrintedRe = /[Ss][Ee][Cc][Uu][Rr][Ii][Tt][Yy]\s*([A-Za-z\s]*)[Ff][Ee][Aa][Tt][Uu][Rr][Ee][Ss]\s*[Dd][Oo][Ll][Ll][Aa][Rr][Ss]/;
+    let amountPrintedRe = /[Ss][Ee][Cc][Uu][Rr][Ii][Tt][Yy]\s*([A-Za-z\s-,.]*)[Ff][Ee][Aa][Tt][Uu][Rr][Ee][Ss]\s*[Dd][Oo][Ll][Ll][Aa][Rr][Ss]/;
     amountPrinted = string.match(amountPrintedRe) !== null ? string.match(amountPrintedRe)[1] : amountPrinted;
 
-    let memoRe = /[Ff][Oo][Rr]\s*([A-Za-z\s]*)/;
-    memo = string.match(memoRe) !== null ? string.match(memoRe)[1] : memo;
+    let memoRe1 = /[Ff][Oo][Rr]\s*((?:[A-Za-z]*\s)*)((?:[A-Za-z]*\s){2})/;
+    memo = string.match(memoRe1) !== null ? string.match(memoRe1)[1] : memo;
+    namePrinted = string.match(memoRe1) !== null ? string.match(memoRe1)[2] : namePrinted;
+
+    let numbersRe = /:([0-9]{10})[\s:]*([0-9]{9})/;
+    routing = string.match(numbersRe) !== null ? string.match(numbersRe)[1] : routing;
+    account = string.match(numbersRe) !== null ? string.match(numbersRe)[2] : account;
+
 
     return {
       date,
