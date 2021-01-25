@@ -13,43 +13,23 @@ namespace Checkbot
 {
     public class ComputerVision
     {
-        static string subscriptionKey = "3428b884dd704497b6165b9a41f3ea12";
-        static string endpoint = "https://computervisionr.cognitiveservices.azure.com/";
-
-        private string READ_TEXT_URL_IMAGE;
-
-        public ComputerVision(String image_url)
-        {
-            READ_TEXT_URL_IMAGE = image_url;
-
-            Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
-            Console.WriteLine();
-
-            // Create a client
-            ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
+        private const string SUBSCRIPTIONKEY = "3428b884dd704497b6165b9a41f3ea12";
+        private const string ENDPOINT = "https://computervisionr.cognitiveservices.azure.com/";
 
 
-            // Extract OCR
-            ReadFileUrl(client, READ_TEXT_URL_IMAGE).Wait();
-
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine("Computer Vision quickstart is complete.");
-        }
-
-        public static ComputerVisionClient Authenticate(string endpoint, string key)
+        public static ComputerVisionClient Authenticate()
         {
             ComputerVisionClient client =
-              new ComputerVisionClient(new ApiKeyServiceClientCredentials(key))
-              { Endpoint = endpoint };
+              new ComputerVisionClient(new ApiKeyServiceClientCredentials(SUBSCRIPTIONKEY))
+              { Endpoint = ENDPOINT };
             return client;
         }
 
-        public static async Task ReadFileUrl(ComputerVisionClient client, string urlFile)
+        public static async Task<string[]> ReadFileUrl(string urlFile)
         {
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("READ FILE FROM URL");
-            Console.WriteLine();
+            ComputerVisionClient client = Authenticate();
+
+            List<string> list = new List<string>();
 
             // Read text from URL
             var textHeaders = await client.ReadAsync(urlFile, language: "en");
@@ -65,8 +45,7 @@ namespace Checkbot
 
             // Extract the text
             ReadOperationResult results;
-            Console.WriteLine($"Extracting text from URL file {Path.GetFileName(urlFile)}...");
-            Console.WriteLine();
+
             do
             {
                 results = await client.GetReadResultAsync(Guid.Parse(operationId));
@@ -74,19 +53,17 @@ namespace Checkbot
             while ((results.Status == OperationStatusCodes.Running ||
                 results.Status == OperationStatusCodes.NotStarted));
 
-
-            // Display the found text.
-            Console.WriteLine();
+            // Add text to list
             var textUrlFileResults = results.AnalyzeResult.ReadResults;
             foreach (ReadResult page in textUrlFileResults)
             {
                 foreach (Line line in page.Lines)
                 {
-                    Console.WriteLine(line.Text);
+                   list.Add(line.Text);
                 }
             }
 
-            Console.WriteLine();
+            return list.ToArray();
         }
     }
 }
