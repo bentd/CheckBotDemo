@@ -28,8 +28,9 @@ namespace Checkbot.Controllers
 
         // POST api/check
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<string[]> Post([FromBody] string url)
         {
+            return await ComputerVision.ReadFileUrl(url);
         }
 
         // PUT api/check/5
